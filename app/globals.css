@@ -13,8 +13,9 @@
   --slate-soft: #6b7689;
   --line: rgba(10, 15, 44, 0.08);
 
-  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  /* Font variables are injected by next/font in app/layout.tsx */
+  --font-body: var(--font-inter), system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-display: var(--font-playfair), Georgia, 'Times New Roman', serif;
 
   --maxw: 1200px;
   --pad-x: clamp(1.25rem, 4vw, 2.5rem);
@@ -235,7 +236,247 @@ p { margin: 0 0 1em; color: var(--slate); }
 .page-hero p { color: rgba(248, 248, 246, 0.78); max-width: 640px; margin: 0 auto; }
 .page-hero .gold-rule { width: 60px; height: 2px; background: var(--gold); margin: 1.25rem auto 1.5rem; }
 
-/* ---------------- Verticals grid ---------------- */
+/* ---------------- Editorial pillars spread ---------------- */
+.pillars-editorial {
+  margin-top: clamp(2.5rem, 6vw, 4rem);
+  border-top: 1px solid var(--line);
+}
+.pillar-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: center;
+  padding: clamp(3.5rem, 8vw, 6rem) 0;
+  border-bottom: 1px solid var(--line);
+}
+.pillar-row.reverse .pillar-anim { order: 2; }
+.pillar-row.reverse .pillar-text { order: 1; }
+.pillar-row .pillar-anim { order: 1; }
+.pillar-row .pillar-text { order: 2; }
+
+.pillar-number {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+  text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+.pillar-text h3 {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  margin-bottom: 1rem;
+}
+.pillar-text p {
+  font-size: 1.05rem;
+  max-width: 46ch;
+  margin-bottom: 1.5rem;
+}
+.pillar-link {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--navy);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 0.3rem;
+  display: inline-block;
+  transition: color var(--transition), border-color var(--transition);
+}
+.pillar-link:hover {
+  color: var(--gold);
+  border-color: var(--gold-soft);
+}
+
+/* ---------------- Pillar animation stage ---------------- */
+.pillar-anim {
+  position: relative;
+  aspect-ratio: 5 / 4;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  outline: none;
+  cursor: pointer;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+.pillar-anim:hover,
+.pillar-anim:focus-visible {
+  border-color: rgba(201, 168, 76, 0.45);
+  box-shadow: var(--shadow-soft);
+}
+.pillar-anim::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 110%, rgba(201, 168, 76, 0.08), transparent 60%);
+}
+.pillar-anim-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.pillar-anim svg {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: block;
+  color: var(--navy);
+}
+
+/* === Shared path-drawing helper === */
+/* Defaults to fully drawn so reduced-motion / pre-trigger looks finished. */
+.pillar-anim [data-draw] {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+.pillar-anim.is-playing [data-draw] {
+  animation: pillarDraw 0.9s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+@keyframes pillarDraw {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}
+
+/* === Software: drawing code === */
+.anim-software .frame { stroke: var(--line); stroke-width: 1; fill: none; }
+.anim-software .dot { fill: rgba(10, 15, 44, 0.18); }
+.anim-software .bracket {
+  stroke: var(--gold);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+.anim-software .bar {
+  stroke: currentColor;
+  stroke-width: 6;
+  stroke-linecap: round;
+  fill: none;
+}
+.anim-software .cursor { fill: var(--gold); opacity: 1; }
+
+.pillar-anim.is-playing .anim-software .bracket { animation-duration: 0.6s; animation-delay: 0.1s; }
+.pillar-anim.is-playing .anim-software .bar-1 { animation-delay: 0.5s; }
+.pillar-anim.is-playing .anim-software .bar-2 { animation-delay: 0.9s; }
+.pillar-anim.is-playing .anim-software .bar-3 { animation-delay: 1.3s; }
+.pillar-anim.is-playing .anim-software .bar-4 { animation-delay: 1.7s; }
+.pillar-anim.is-playing .anim-software .cursor {
+  animation: codeCursor 0.8s steps(1) 2.4s 3 backwards;
+}
+@keyframes codeCursor {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* === Skin care: droplet & ripple === */
+.anim-skincare .leaf { fill: rgba(201, 168, 76, 0.08); }
+.anim-skincare .droplet {
+  fill: var(--navy);
+  transform: translateY(0);
+  opacity: 1;
+}
+.anim-skincare .ripple {
+  stroke: var(--gold);
+  stroke-width: 1.5;
+  fill: none;
+  opacity: 0;
+  transform-origin: 100px 120px;
+  transform-box: fill-box;
+}
+.anim-skincare .ripple-2 { stroke: var(--gold-soft); }
+
+.pillar-anim.is-playing .anim-skincare .droplet {
+  animation: dropletFall 1.6s cubic-bezier(0.55, 0, 0.7, 0.4) forwards;
+}
+.pillar-anim.is-playing .anim-skincare .ripple {
+  animation: rippleOut 1.4s ease-out 1.5s forwards;
+}
+.pillar-anim.is-playing .anim-skincare .ripple-2 {
+  animation: rippleOut 1.4s ease-out 1.75s forwards;
+}
+@keyframes dropletFall {
+  0% { transform: translateY(0); opacity: 1; }
+  82% { transform: translateY(38px); opacity: 1; }
+  100% { transform: translateY(38px); opacity: 0; }
+}
+@keyframes rippleOut {
+  0% { transform: scale(0.1); opacity: 0; }
+  15% { opacity: 1; }
+  100% { transform: scale(1); opacity: 0; }
+}
+
+/* === Coffee: cup & steam === */
+.anim-coffee .cup {
+  stroke: currentColor;
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+.anim-coffee .saucer {
+  stroke: currentColor;
+  stroke-width: 4;
+  stroke-linecap: round;
+  fill: none;
+  opacity: 0.55;
+}
+.anim-coffee .liquid { fill: rgba(10, 15, 44, 0.85); }
+.anim-coffee .steam {
+  stroke: var(--gold);
+  stroke-width: 3;
+  stroke-linecap: round;
+  fill: none;
+  opacity: 0;
+  transform-origin: center bottom;
+}
+.pillar-anim.is-playing .anim-coffee .steam-1 { animation: steamRise 2.2s ease-out 0.3s forwards; }
+.pillar-anim.is-playing .anim-coffee .steam-2 { animation: steamRise 2.2s ease-out 0.8s forwards; }
+.pillar-anim.is-playing .anim-coffee .steam-3 { animation: steamRise 2.2s ease-out 1.3s forwards; }
+@keyframes steamRise {
+  0% { opacity: 0; transform: translateY(10px) scaleX(1); }
+  20% { opacity: 0.8; }
+  60% { opacity: 0.6; }
+  100% { opacity: 0; transform: translateY(-40px) scaleX(1.4); }
+}
+
+/* === Real estate: building + lit window === */
+.anim-realestate .outline {
+  stroke: currentColor;
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+.anim-realestate .ground { stroke: var(--line); stroke-width: 2; }
+.anim-realestate .window { fill: rgba(10, 15, 44, 0.15); opacity: 1; }
+.anim-realestate .lit {
+  fill: var(--gold);
+  opacity: 0.9;
+  filter: drop-shadow(0 0 6px rgba(201, 168, 76, 0.5));
+}
+.pillar-anim.is-playing .anim-realestate .window {
+  animation: windowFade 0.4s ease-out both;
+}
+.pillar-anim.is-playing .anim-realestate .win-1 { animation-delay: 1.2s; }
+.pillar-anim.is-playing .anim-realestate .win-2 { animation-delay: 1.35s; }
+.pillar-anim.is-playing .anim-realestate .win-3 { animation-delay: 1.5s; }
+.pillar-anim.is-playing .anim-realestate .win-4 { animation-delay: 1.65s; }
+.pillar-anim.is-playing .anim-realestate .win-5 { animation-delay: 1.8s; }
+.pillar-anim.is-playing .anim-realestate .lit {
+  animation: lightUp 0.8s ease-out 2.1s both;
+}
+@keyframes windowFade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes lightUp {
+  0% { opacity: 0; }
+  60% { opacity: 1; }
+  100% { opacity: 0.9; }
+}
+
+/* === Verticals grid (kept for other pages) ============= */
 .verticals {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -474,11 +715,38 @@ form.contact-form {
   transform: translateY(0);
 }
 
+/* ---------------- Agent page ---------------- */
+.agent-shell {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: clamp(2rem, 6vw, 4rem) var(--pad-x) var(--section-y);
+}
+.agent-shell .agent-intro {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 2.5rem;
+}
+.agent-shell .agent-frame {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  min-height: 560px;
+  display: flex;
+  flex-direction: column;
+}
+
 /* ---------------- Responsive ---------------- */
 @media (max-width: 860px) {
   .split, .contact-grid { grid-template-columns: 1fr; }
   .footer-inner { grid-template-columns: 1fr 1fr; }
   .service-block { grid-template-columns: 1fr; gap: 1rem; }
+  .pillar-row { grid-template-columns: 1fr; gap: 1.75rem; }
+  .pillar-row.reverse .pillar-anim,
+  .pillar-row .pillar-anim { order: 1; }
+  .pillar-row.reverse .pillar-text,
+  .pillar-row .pillar-text { order: 2; }
 }
 @media (max-width: 640px) {
   .nav-toggle { display: inline-block; }

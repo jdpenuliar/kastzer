@@ -34,5 +34,16 @@ build/
 .cache/
 .parcel-cache/
 
+# Next.js
+.next/
+out/
+*.tsbuildinfo
+
 # Vercel
 .vercel
+
+# Claude Code
+.claude/settings.local.json
+.claude/skills/**/__pycache__/
+.claude/skills/**/.next/
+.claude/skills/**/*.pyc
