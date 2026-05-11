@@ -14,8 +14,7 @@ export function Footer() {
             coffee, and real estate.
           </p>
           <p>
-            Santa Clara, CA &middot;{" "}
-            <a href="mailto:contact@kastzer.com">contact@kastzer.com</a>
+            <a href="mailto:operations@kastzer.com">operations@kastzer.com</a>
           </p>
         </div>
         <div>
