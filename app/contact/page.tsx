@@ -5,7 +5,7 @@ import { ContactForm } from "@/components/ContactForm";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get in touch with Kastzer. Email contact@kastzer.com or send us a message.",
+    "Get in touch with Kastzer. Email operations@kastzer.com or send us a message.",
 };
 
 export default function ContactPage() {
@@ -37,11 +37,8 @@ export default function ContactPage() {
 
               <div className="label">Email</div>
               <p className="value">
-                <a href="mailto:contact@kastzer.com">contact@kastzer.com</a>
+                <a href="mailto:operations@kastzer.com">operations@kastzer.com</a>
               </p>
-
-              <div className="label">Office</div>
-              <p className="value">Santa Clara, CA</p>
 
               <div className="label">Inquiries</div>
               <p className="value">Software &middot; Skin Care &middot; Coffee &middot; Real Estate</p>

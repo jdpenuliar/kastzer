@@ -28,7 +28,7 @@ export default function TermsPage() {
           <div className="legal">
             <p className="meta">
               Last updated: [DATE] &middot; Contact:{" "}
-              <a href="mailto:contact@kastzer.com">contact@kastzer.com</a>
+              <a href="mailto:operations@kastzer.com">operations@kastzer.com</a>
             </p>
 
             <h2>1. Agreement to Terms</h2>
@@ -169,9 +169,8 @@ export default function TermsPage() {
               These Terms are governed by the laws of the State of California, without
               regard to conflict-of-law principles. Any dispute arising out of or
               relating to these Terms or the Services will be subject to the exclusive
-              jurisdiction of the state and federal courts located in Santa Clara
-              County, California, and you consent to personal jurisdiction in those
-              courts.
+              jurisdiction of the state and federal courts located in California, and
+              you consent to personal jurisdiction in those courts.
             </p>
 
             <h2>15. Changes to These Terms</h2>
@@ -186,8 +185,7 @@ export default function TermsPage() {
             <h2>16. Contact</h2>
             <p>
               Questions about these Terms? Email{" "}
-              <a href="mailto:contact@kastzer.com">contact@kastzer.com</a> or write to
-              us at Kastzer, Santa Clara, CA.
+              <a href="mailto:operations@kastzer.com">operations@kastzer.com</a>.
             </p>
           </div>
         </div>

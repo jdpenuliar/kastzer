@@ -8,7 +8,7 @@ export function ContactForm() {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setNote(
-      "Thanks — for now, please email contact@kastzer.com directly. We will get back to you shortly.",
+      "Thanks — for now, please email operations@kastzer.com directly. We will get back to you shortly.",
     );
   }
 
@@ -37,7 +37,7 @@ export function ContactForm() {
         {note ?? (
           <>
             This form is for inquiries only and does not submit to a backend. Please
-            email <a href="mailto:contact@kastzer.com">contact@kastzer.com</a> directly.
+            email <a href="mailto:operations@kastzer.com">operations@kastzer.com</a> directly.
           </>
         )}
       </p>

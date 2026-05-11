@@ -122,8 +122,6 @@ export default function ServicesPage() {
             description="Specialty coffee, sourced and roasted with the same attention you'd expect from a small batch atelier. We work directly with producers, roast in small lots, and ship at peak. For cafés, we offer consulting on sourcing, equipment, and bar workflow — the operating details that separate the ordinary from the memorable."
             items={[
               "Single-origin specialty sourcing",
-              "Subscription roast programs",
-              "Café concept & menu consulting",
               "Equipment & workflow design",
               "Barista training & standards",
             ]}

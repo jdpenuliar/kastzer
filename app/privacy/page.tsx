@@ -28,7 +28,7 @@ export default function PrivacyPage() {
           <div className="legal">
             <p className="meta">
               Last updated: [DATE] &middot; Contact:{" "}
-              <a href="mailto:contact@kastzer.com">contact@kastzer.com</a>
+              <a href="mailto:operations@kastzer.com">operations@kastzer.com</a>
             </p>
 
             <h2>1. Introduction</h2>
@@ -168,7 +168,7 @@ export default function PrivacyPage() {
               Depending on where you reside, you may have rights to access, correct,
               delete, port, or restrict processing of your personal information, or to
               withdraw consent. To exercise these rights, contact us at{" "}
-              <a href="mailto:contact@kastzer.com">contact@kastzer.com</a>. We will
+              <a href="mailto:operations@kastzer.com">operations@kastzer.com</a>. We will
               respond within the timeframes required by applicable law.
             </p>
 
@@ -201,8 +201,7 @@ export default function PrivacyPage() {
             <h2>15. Contact Us</h2>
             <p>
               Questions or requests regarding this Privacy Policy? Email{" "}
-              <a href="mailto:contact@kastzer.com">contact@kastzer.com</a> or write to
-              us at Kastzer, Santa Clara, CA.
+              <a href="mailto:operations@kastzer.com">operations@kastzer.com</a>.
             </p>
           </div>
         </div>
