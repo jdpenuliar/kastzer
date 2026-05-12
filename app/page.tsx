@@ -7,7 +7,19 @@ export default function HomePage() {
     <>
       <section className="hero">
         <div className="hero-bg" aria-hidden="true"></div>
+        <div className="hero-orbs" aria-hidden="true">
+          <div className="hero-orb hero-orb-1"></div>
+          <div className="hero-orb hero-orb-2"></div>
+          <div className="hero-orb hero-orb-3"></div>
+        </div>
+        <div className="hero-particles" aria-hidden="true"></div>
+        <div className="hero-grid" aria-hidden="true"></div>
+        <div className="hero-scan" aria-hidden="true"></div>
         <div className="hero-inner">
+          <div className="ai-pulse-ring">
+            <span className="ai-pulse-dot" aria-hidden="true"></span>
+            AI-Powered Platform
+          </div>
           <h1>Kastzer</h1>
           <div className="gold-rule"></div>
           <p className="hero-tag">Engineering the future. Nurturing the present.</p>

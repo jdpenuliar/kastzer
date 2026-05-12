@@ -18,9 +18,15 @@ export function Nav() {
   return (
     <header className="nav">
       <div className="nav-inner">
-        <Link href="/" className="brand" onClick={() => setOpen(false)}>
-          Kast<span>zer</span>
-        </Link>
+        <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+          <Link href="/" className="brand" onClick={() => setOpen(false)}>
+            Kast<span>zer</span>
+          </Link>
+          <span className="ai-badge" aria-label="AI-Powered platform">
+            <span className="ai-badge-dot" aria-hidden="true"></span>
+            AI-Powered
+          </span>
+        </div>
         <button
           className="nav-toggle"
           aria-label="Toggle navigation"
@@ -32,7 +38,7 @@ export function Nav() {
           <span></span>
           <span></span>
         </button>
-        <ul className={`nav-links${open ? " open" : ""}`}>
+        <ul className={`nav-links${open ? " open" : ""}`} role="list">
           {links.map((link) => {
             const isActive =
               link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
