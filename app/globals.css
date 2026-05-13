@@ -781,6 +781,296 @@ form.contact-form {
   .hero-ctas .btn { width: 100%; }
 }
 
+/* ====================================================
+   AI Branding & Modern Animations
+   ==================================================== */
+
+/* ---- Floating gradient orbs ---- */
+.hero-orbs {
+  position: absolute; inset: 0; z-index: -1;
+  pointer-events: none; overflow: hidden;
+}
+.hero-orb { position: absolute; border-radius: 50%; }
+.hero-orb-1 {
+  width: 700px; height: 700px;
+  top: -250px; left: -150px;
+  background: radial-gradient(circle, rgba(201,168,76,0.16) 0%, transparent 65%);
+  animation: orbFloat1 22s ease-in-out infinite;
+}
+.hero-orb-2 {
+  width: 550px; height: 550px;
+  bottom: -200px; right: -120px;
+  background: radial-gradient(circle, rgba(201,168,76,0.10) 0%, transparent 65%);
+  animation: orbFloat2 28s ease-in-out infinite;
+}
+.hero-orb-3 {
+  width: 400px; height: 400px;
+  top: 30%; left: 55%;
+  background: radial-gradient(circle, rgba(20,26,61,0.55) 0%, transparent 65%);
+  animation: orbFloat3 18s ease-in-out infinite;
+}
+@keyframes orbFloat1 {
+  0%, 100% { transform: translate(0, 0); }
+  40%       { transform: translate(60px, 30px); }
+  70%       { transform: translate(-30px, 60px); }
+}
+@keyframes orbFloat2 {
+  0%, 100% { transform: translate(0, 0); }
+  35%       { transform: translate(-50px, -35px); }
+  65%       { transform: translate(35px, -60px); }
+}
+@keyframes orbFloat3 {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.18); }
+}
+
+/* ---- Neural-network dot grid ---- */
+.hero-particles {
+  position: absolute; inset: 0; z-index: -1;
+  background-image: radial-gradient(circle, rgba(201,168,76,0.32) 1px, transparent 1px);
+  background-size: 55px 55px;
+  animation: particleShift 38s linear infinite;
+  opacity: 0.5;
+  pointer-events: none;
+}
+/* ---- Subtle connecting grid lines ---- */
+.hero-grid {
+  position: absolute; inset: 0; z-index: -1;
+  background-image:
+    linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+  background-size: 55px 55px;
+  animation: particleShift 38s linear infinite;
+  pointer-events: none;
+}
+@keyframes particleShift {
+  from { background-position: 0 0; }
+  to   { background-position: 55px 55px; }
+}
+
+/* ---- Scan line ---- */
+.hero-scan {
+  position: absolute; inset: 0; z-index: 0;
+  pointer-events: none; overflow: hidden;
+}
+.hero-scan::after {
+  content: '';
+  position: absolute; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(201,168,76,0.55) 40%, rgba(201,168,76,0.55) 60%, transparent 100%);
+  animation: scanLine 9s ease-in-out 1.5s infinite;
+  opacity: 0;
+}
+@keyframes scanLine {
+  0%   { top: 0%;   opacity: 0; }
+  5%   { opacity: 1; }
+  92%  { opacity: 0.7; }
+  100% { top: 100%; opacity: 0; }
+}
+
+/* ---- Staggered hero content entrance ---- */
+.hero-inner > * {
+  opacity: 0;
+  animation: heroEnter 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.hero-inner > *:nth-child(1) { animation-delay: 0.05s; }
+.hero-inner > *:nth-child(2) { animation-delay: 0.20s; }
+.hero-inner > *:nth-child(3) { animation-delay: 0.38s; }
+.hero-inner > *:nth-child(4) { animation-delay: 0.54s; }
+.hero-inner > *:nth-child(5) { animation-delay: 0.68s; }
+.hero-inner > *:nth-child(6) { animation-delay: 0.82s; }
+@keyframes heroEnter {
+  from { opacity: 0; transform: translateY(22px); filter: blur(3px); }
+  to   { opacity: 1; transform: translateY(0);    filter: blur(0);   }
+}
+
+/* ---- Gold shimmer sweep on hero h1 ---- */
+/* .hero h1 has higher specificity than .hero-inner > *, so we combine both
+   animations here to prevent the entrance animation from being dropped. */
+.hero h1 {
+  background: linear-gradient(
+    100deg,
+    var(--white) 0%,
+    var(--white) 28%,
+    var(--gold-soft) 46%,
+    #ffe9a0 52%,
+    var(--white) 68%,
+    var(--white) 100%
+  );
+  background-size: 260% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* h1 is 2nd child (delay 0.20s) — must list heroEnter first so fill-mode works */
+  animation:
+    heroEnter 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.20s forwards,
+    shimmerText 7s linear 1.4s infinite;
+}
+@keyframes shimmerText {
+  0%   { background-position: 130% center; }
+  100% { background-position: -130% center; }
+}
+
+/* ---- AI pulse ring (hero indicator pill) ---- */
+.ai-pulse-ring {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 1.75rem;
+  padding: 0.42rem 1.05rem;
+  background: rgba(201,168,76,0.08);
+  border: 1px solid rgba(201,168,76,0.28);
+  border-radius: 999px;
+  color: rgba(216,189,110,0.92);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.ai-pulse-dot {
+  display: inline-block;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--gold);
+  flex-shrink: 0;
+  animation: dotPulse 2.4s cubic-bezier(0.66, 0, 0, 1) infinite;
+}
+@keyframes dotPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(201,168,76,0.85); }
+  70%  { box-shadow: 0 0 0 9px rgba(201,168,76,0); }
+  100% { box-shadow: 0 0 0 0 rgba(201,168,76,0); }
+}
+
+/* ---- Nav AI badge ---- */
+.ai-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.36rem;
+  padding: 0.28rem 0.72rem;
+  background: rgba(201,168,76,0.08);
+  border: 1px solid rgba(201,168,76,0.28);
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: default;
+  user-select: none;
+}
+.ai-badge-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--gold);
+  flex-shrink: 0;
+  animation: aiBadgePulse 2.2s ease-in-out infinite;
+}
+@keyframes aiBadgePulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 5px rgba(201,168,76,0.9); }
+  50%       { opacity: 0.3; box-shadow: none; }
+}
+@media (max-width: 560px) { .ai-badge { display: none; } }
+
+/* ---- Floating vertical-themed icons (AI · code · skin · coffee · real estate) ---- */
+.hero-icons {
+  position: absolute; inset: 0; z-index: -1;
+  pointer-events: none; overflow: hidden;
+}
+.hero-icon {
+  position: absolute;
+  color: rgba(216, 189, 110, 0.32);
+  opacity: 0;
+  will-change: transform, opacity;
+}
+.hero-icon svg {
+  width: 100%; height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* AI sparkle */
+.hero-icon-ai {
+  width: 36px; height: 36px;
+  top: 14%; left: 6%;
+  animation: iconDriftA 19s ease-in-out 0.4s infinite;
+}
+/* Code brackets — software engineering */
+.hero-icon-code {
+  width: 38px; height: 38px;
+  top: 22%; right: 9%;
+  animation: iconDriftB 22s ease-in-out 1.6s infinite;
+}
+/* Droplet — skin care */
+.hero-icon-drop {
+  width: 30px; height: 30px;
+  top: 48%; left: 4%;
+  animation: iconDriftC 21s ease-in-out 3s infinite;
+}
+/* Coffee cup */
+.hero-icon-coffee {
+  width: 36px; height: 36px;
+  top: 52%; right: 5%;
+  animation: iconDriftA 20s ease-in-out 2.2s infinite;
+}
+/* House — real estate */
+.hero-icon-house {
+  width: 38px; height: 38px;
+  top: 76%; left: 11%;
+  animation: iconDriftB 24s ease-in-out 4s infinite;
+}
+/* Second AI sparkle for balance */
+.hero-icon-ai2 {
+  width: 22px; height: 22px;
+  top: 70%; right: 16%;
+  animation: iconDriftC 17s ease-in-out 5s infinite;
+}
+
+@keyframes iconDriftA {
+  0%, 100% { opacity: 0; transform: translate(0, 0) rotate(-3deg); }
+  18%      { opacity: 1; }
+  50%      { transform: translate(14px, -22px) rotate(4deg); }
+  82%      { opacity: 0.55; }
+}
+@keyframes iconDriftB {
+  0%, 100% { opacity: 0; transform: translate(0, 0) rotate(2deg); }
+  20%      { opacity: 1; }
+  50%      { transform: translate(-16px, -24px) rotate(-3deg); }
+  80%      { opacity: 0.5; }
+}
+@keyframes iconDriftC {
+  0%, 100% { opacity: 0; transform: translate(0, 0); }
+  25%      { opacity: 0.95; }
+  50%      { transform: translate(10px, -18px) rotate(5deg); }
+  75%      { opacity: 0.6; }
+}
+
+@media (max-width: 640px) {
+  .hero-icons { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-icon { animation: none !important; opacity: 0.35; }
+}
+
+/* ---- Reduced-motion overrides for new animations ---- */
+@media (prefers-reduced-motion: reduce) {
+  .hero-orb-1, .hero-orb-2, .hero-orb-3,
+  .hero-particles, .hero-grid { animation: none; }
+  .hero-scan::after { animation: none; content: none; }
+  .hero-inner > * { opacity: 1; animation: none; transform: none; filter: none; }
+  .hero h1 {
+    animation: none;
+    opacity: 1;
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    -webkit-text-fill-color: var(--white);
+  }
+  .ai-pulse-dot, .ai-badge-dot { animation: none; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
