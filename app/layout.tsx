@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 
+import { FloatingChat } from "@/components/FloatingChat";
 import { Footer } from "@/components/Footer";
 import { Nav } from "@/components/Nav";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
@@ -39,6 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {children}
         <Footer />
         <RevealOnScroll />
+        <FloatingChat />
       </body>
     </html>
   );
