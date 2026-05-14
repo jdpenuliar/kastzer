@@ -715,6 +715,66 @@ form.contact-form {
   transform: translateY(0);
 }
 
+/* ---------------- AI Adviser page ---------------- */
+.ai-intro {
+  max-width: 680px;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+.ai-intro p { font-size: 1.08rem; color: var(--slate); }
+
+.ai-frame-wrap {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 0;
+  position: relative;
+}
+
+/* Loading overlay */
+.hf-wrap { position: relative; }
+.hf-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background: var(--navy);
+  border-radius: 16px;
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  color: rgba(248, 248, 246, 0.7);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  z-index: 1;
+}
+.hf-pulse {
+  display: inline-block;
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--gold);
+  animation: dotPulse 2.4s cubic-bezier(0.66, 0, 0, 1) infinite;
+}
+
+.ai-footer {
+  max-width: 960px;
+  margin: 2rem auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.ai-note {
+  font-size: 0.88rem;
+  color: var(--slate-soft);
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .ai-footer { flex-direction: column; align-items: flex-start; }
+}
+
 /* ---------------- Agent page ---------------- */
 .agent-shell {
   max-width: 960px;
