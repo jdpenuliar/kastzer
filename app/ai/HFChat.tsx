@@ -14,7 +14,7 @@ export function HFChat() {
         </div>
       )}
       <iframe
-        src="https://huggingface.co/spaces/jdpenuliar/kastzer_profile"
+        src="https://jdpenuliar-kastzer-profile.hf.space/"
         frameBorder="0"
         allow="microphone"
         title="Kastzer AI Adviser"

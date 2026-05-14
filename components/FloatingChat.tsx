@@ -52,7 +52,7 @@ export function FloatingChat() {
                 </div>
               )}
               <iframe
-                src="https://huggingface.co/spaces/jdpenuliar/kastzer_profile"
+                src="https://jdpenuliar-kastzer-profile.hf.space/"
                 title="Kastzer AI Chat"
                 allow="microphone"
                 frameBorder="0"
