@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
@@ -77,10 +78,16 @@ export function FloatingChat() {
         aria-label={open ? "Close AI chat" : "Chat with Kastzer AI"}
         aria-expanded={open}
       >
-        {/* Chat icon */}
-        <svg className="fc-icon-chat" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-        </svg>
+        {/* Iron Man helmet icon */}
+        <Image
+          src="/ironman.png"
+          alt="Chat with Kastzer AI"
+          width={36}
+          height={36}
+          className="fc-icon-chat"
+          style={{ objectFit: "contain", display: "block" }}
+          priority
+        />
         {/* Close icon */}
         <svg className="fc-icon-close" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
           <path d="M18 6L6 18M6 6l12 12" />

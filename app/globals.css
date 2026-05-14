@@ -802,29 +802,29 @@ form.contact-form {
   position: fixed;
   bottom: 28px; right: 28px;
   z-index: 200;
-  width: 58px; height: 58px;
+  width: 62px; height: 62px;
   border-radius: 50%;
-  background: var(--gold);
-  border: none;
+  background: linear-gradient(135deg, #1a0204 0%, #2d0308 100%);
+  border: 2px solid rgba(201, 168, 76, 0.5);
   cursor: pointer;
   display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 4px 20px rgba(201, 168, 76, 0.45), 0 2px 8px rgba(0,0,0,0.2);
-  transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
-  color: var(--navy);
+  box-shadow: 0 4px 20px rgba(196,30,30,0.35), 0 2px 8px rgba(0,0,0,0.35);
+  transition: transform var(--transition), box-shadow var(--transition);
+  padding: 0;
+  overflow: hidden;
 }
 .fc-btn:hover {
-  transform: translateY(-2px) scale(1.06);
-  box-shadow: 0 8px 28px rgba(201, 168, 76, 0.55), 0 4px 12px rgba(0,0,0,0.25);
+  transform: translateY(-2px) scale(1.07);
+  box-shadow: 0 8px 28px rgba(196,30,30,0.5), 0 0 0 3px rgba(201,168,76,0.3), 0 4px 12px rgba(0,0,0,0.4);
 }
 .fc-btn:focus-visible {
   outline: 2px solid var(--gold);
   outline-offset: 3px;
 }
-.fc-btn-open { background: var(--navy); color: var(--white); }
-.fc-btn-open:hover { background: var(--navy-2); }
+.fc-btn-open { border-color: rgba(248,248,246,0.3); background: var(--navy); }
 
 .fc-icon-chat  { display: block; }
-.fc-icon-close { display: none; }
+.fc-icon-close { display: none; color: rgba(248,248,246,0.8); }
 .fc-btn-open .fc-icon-chat  { display: none; }
 .fc-btn-open .fc-icon-close { display: block; }
 
