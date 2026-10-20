@@ -7,6 +7,7 @@ import { NextRequest, NextResponse } from "next/server";
 const GATES: { prefix: string; envVar: string; realm: string }[] = [
   { prefix: "/friendly-care", envVar: "FRIENDLY_CARE_DEMO_PASSWORD", realm: "Friendly Care Demo" },
   { prefix: "/jewelry", envVar: "JEWELRY_DEMO_PASSWORD", realm: "Jewelry Demo" },
+  { prefix: "/ems-kusina", envVar: "EMS_KUSINA_DEMO_PASSWORD", realm: "Ems Kusina Demo" },
 ];
 
 function passwordMatches(req: NextRequest, expected: string): boolean {
@@ -40,5 +41,5 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/friendly-care", "/friendly-care/:path*", "/jewelry", "/jewelry/:path*"],
+  matcher: ["/friendly-care", "/friendly-care/:path*", "/jewelry", "/jewelry/:path*", "/ems-kusina", "/ems-kusina/:path*"],
 };
