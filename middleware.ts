@@ -5,6 +5,7 @@ import { NextRequest, NextResponse } from "next/server";
 // variable (never in source): any username is accepted, the password
 // must match. Visitors get the browser's native sign-in prompt.
 const GATES: { prefix: string; envVar: string; realm: string }[] = [
+  { prefix: "/friendly-care-v3", envVar: "FRIENDLY_CARE_DEMO_PASSWORD", realm: "Friendly Care V3 Preview" },
   { prefix: "/friendly-care", envVar: "FRIENDLY_CARE_DEMO_PASSWORD", realm: "Friendly Care Demo" },
   { prefix: "/jewelry", envVar: "JEWELRY_DEMO_PASSWORD", realm: "Jewelry Demo" },
   { prefix: "/ems-kusina", envVar: "EMS_KUSINA_DEMO_PASSWORD", realm: "Ems Kusina Demo" },
@@ -41,5 +42,5 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/friendly-care", "/friendly-care/:path*", "/jewelry", "/jewelry/:path*", "/ems-kusina", "/ems-kusina/:path*"],
+  matcher: ["/friendly-care", "/friendly-care/:path*", "/friendly-care-v3", "/friendly-care-v3/:path*", "/jewelry", "/jewelry/:path*", "/ems-kusina", "/ems-kusina/:path*"],
 };
